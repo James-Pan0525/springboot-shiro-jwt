@@ -111,7 +111,7 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
         //获取请求方式
         String method = WebUtils.toHttp(request).getMethod();
         //subject.isPermitted返回false表示未授权 true已授权 会去调用ream中的授权 这里控制的方法级别 /GET/sysUser/**
-        //如果访问的url没有被授权则会拒绝访问，走访问拒绝的处理逻辑isAccessAllowed，有则放行
+        //如果访问的url没有被授权则会拒绝访问，走访问拒绝的处理逻辑onAccessDenied，有则放行
         return subject.isPermitted("/"+method+getPathWithinApplication(request));
     }
 
